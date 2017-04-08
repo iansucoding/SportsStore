@@ -5,3 +5,5 @@ SportsStore.WebUI/obj/
 SportsStore.Domain/bin/
 SportsStore.Domain/obj/
 
+SportsStore.UnitTests/bin/
+SportsStore.UnitTests/obj/
