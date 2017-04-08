@@ -1,0 +1,7 @@
+.vs/
+packages/
+SportsStore.WebUI/bin/
+SportsStore.WebUI/obj/
+SportsStore.Domain/bin/
+SportsStore.Domain/obj/
+
