@@ -1,10 +1,9 @@
-﻿using Moq;
-using Ninject;
+﻿using Ninject;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Concrete;
-using SportsStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace SportsStore.WebUI.Infrastructure
@@ -31,6 +30,7 @@ namespace SportsStore.WebUI.Infrastructure
 
         private void AddBinding()
         {
+            // 還沒有 IProductRepository 的實做時先 mock
             //Mock<IProductRepository> mock = new Mock<IProductRepository>();
             //mock.Setup(m => m.Products).Returns(new List<Product> {
             //    new Product{Name="Football",Price=25},
@@ -40,6 +40,12 @@ namespace SportsStore.WebUI.Infrastructure
             //kernel.Bind<IProductRepository>().ToConstant(mock.Object);
 
             kernel.Bind<IProductRepository>().To<EFProductRepository>();
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+            kernel.Bind<IOderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
         }
     }
 }
