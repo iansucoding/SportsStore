@@ -8,3 +8,8 @@ SportsStore.Domain/obj/
 SportsStore.UnitTests/bin/
 SportsStore.UnitTests/obj/
 SportsStore.WebUI/App_Data/
+SportsStore.Database/obj/
+SportsStore.Database/bin/
+SportsStore.Database/Import Schema Logs/
+SportsStore.Database/SportsStore.Database.dbmdl
+SportsStore.Database/SportsStore.Database.jfm
